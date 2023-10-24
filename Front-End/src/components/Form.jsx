@@ -1,7 +1,7 @@
 import React from 'react'
 import {BiEdit} from 'react-icons/bi'
 import {AiOutlineEye, AiFillDelete} from 'react-icons/ai'
-import { MdToggleOn, MdToggleOff } from "react-icons/md";
+// import { MdToggleOn, MdToggleOff } from "react-icons/md";
 import '../css/style.css'
 import '../css/landing.css'
 import '../fonts/cryptofont.css'
@@ -167,7 +167,7 @@ function Form() {
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Tipo de documento</th>
+                                            <th>Tipo</th>
                                             <th>Documento</th>
                                             <th>Nombre</th>
                                             <th>Empresa</th>
@@ -179,10 +179,10 @@ function Form() {
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>CC</td>
                                             <td>1023522319</td>
                                             <td>Mark</td>
                                             <td>Otto</td>
-                                            <td>@mdo</td>
                                             <td>3012649543</td>
                                             <td>Medellin</td>
                                             <td>estefania@gmaail.com</td>

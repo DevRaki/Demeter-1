@@ -12,6 +12,7 @@ function App() {
       <Navbar />
       <Encabezado />
       {/* <main className='container mx-auto px-10 flex-grow'> */}
+      <Form/>
       <Routes>
         <Route path='/' element={<h1>DASHBOARD</h1>} />
       </Routes>

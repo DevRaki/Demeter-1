@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../img/logo.png'
-import '../style.css'
-import '../landing.css'
+import '../css/style.css'
+import '../css/landing.css'
 import { useNavigate } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SecurityIcon from '@mui/icons-material/Security';
