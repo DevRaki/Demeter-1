@@ -1,7 +1,7 @@
 import React from 'react'
-import { BiEdit } from 'react-icons/bi'
-import { AiOutlineEye, AiFillDelete } from 'react-icons/ai'
-// import { MdToggleOn, MdToggleOff } from "react-icons/md";
+import {BiEdit} from 'react-icons/bi'
+import {AiOutlineEye, AiFillDelete} from 'react-icons/ai'
+import { MdToggleOn, MdToggleOff } from "react-icons/md";
 import '../css/style.css'
 import '../css/landing.css'
 import '../fonts/cryptofont.css'
@@ -186,9 +186,9 @@ function Form() {
                                                     <td>3012649543</td>
                                                     <td>Medellin</td>
                                                     <td>estefania@gmaail.com</td>
-                                                    <td><button type="button" className="btn  btn-icon btn-primary"><BiEdit /></button>
-                                                        <button type="button" className="btn  btn-icon btn-secondary"><AiOutlineEye /></button>
-                                                        <button type="button" className="btn  btn-icon btn-success"><AiFillDelete /></button>
+                                                    <td><button type="button" className="btn btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit/></i></button>
+                                                        <button type="button" className="btn btn-icon btn-secondary"><i data-feather="camera"><AiOutlineEye/></i></button>
+                                                        <button type="button" className="btn btn-icon btn-success"><i data-feather="check-circle"><AiFillDelete/></i></button>
                                                     </td>
                                                 </tr>
                                             </tbody>
