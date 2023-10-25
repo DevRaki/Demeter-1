@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {BiEdit} from 'react-icons/bi'
 import {AiOutlineEye, AiFillDelete} from 'react-icons/ai'
 import { MdToggleOn, MdToggleOff } from "react-icons/md";
+import { useSupplier } from '../Context/Supplier.context';
 import '../css/style.css'
 import '../css/landing.css'
 import '../fonts/cryptofont.css'
@@ -12,6 +13,12 @@ import '../fonts//material.css'
 
 
 function Form() {
+    const { supplier, getSupplier, deleteSupplier } = useSupplier();
+
+    useEffect(() => {
+        getSupplier().then(console.log(supplier));
+      }, []);
+
   return (
    
     <section class="pc-container">
@@ -181,19 +188,23 @@ function Form() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1023522319</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>3012649543</td>
-                                            <td>Medellin</td>
-                                            <td>estefania@gmaail.com</td>
+                                    {supplier.map((supplierItem) => (
+                                    <tr key={supplierItem.ID_Supplier}>
+                                        <td>{supplierItem.Type_Document}</td>
+                                        <td>{supplierItem.Document}</td>
+                                        <td>{supplierItem.Name_Supplier}</td>
+                                        <td>{supplierItem.Name_Business}</td>
+                                        <td>{supplierItem.Phone}</td>
+                                        <td>{supplierItem.City}</td>
+                                        <td>{supplierItem.Email}</td>
+                                        
+                                        
                                             <td><button type="button" class="btn  btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit/></i></button>
                                                 <button type="button" class="btn  btn-icon btn-secondary"><i data-feather="camera"><AiOutlineEye/></i></button>
                                                 <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle"><AiFillDelete/></i></button>
                                             </td>
-                                        </tr>                        
+                                        </tr>    
+                                       ))}               
                                     </tbody>
                                 </table>
                             </div>
