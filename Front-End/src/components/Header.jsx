@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/style.css'
-// import '../css/landing.css'
+import '../css/landing.css'
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import LockIcon from '@mui/icons-material/Lock';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';

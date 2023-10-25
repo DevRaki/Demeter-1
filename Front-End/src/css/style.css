@@ -3912,12 +3912,12 @@ fieldset:disabled .btn {
     padding: 0.5rem 0;
     margin: 0.125rem 0 0;
     font-size: 0.875rem;
-    color: #293240;
+    color: #161c25;
     text-align: left;
     list-style: none;
-    background-color: #ffffff;
+    background-color: #ffff;
     background-clip: padding-box;
-    border: 0 solid rgba(0, 0, 0, 0.15);
+    border: 0 solid #0000;
     border-radius: 4px;
 }
 

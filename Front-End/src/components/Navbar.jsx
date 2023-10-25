@@ -18,13 +18,11 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const toggleSubmenuCompras = () => {
-        setSubmenuComprasVisible(!submenuComprasVisible);
-        setSubmenuComprasVisible(false);
+        setSubmenuComprasVisible(prevStateC => !prevStateC);
     };
 
     const toggleSubmenuVentas = () => {
-        setSubmenuVentasVisible(!submenuVentasVisible);
-        setSubmenuVentasVisible(false);
+        setSubmenuVentasVisible(prevStateV => !prevStateV);
     }
 
     return (
