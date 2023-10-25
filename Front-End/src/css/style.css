@@ -15236,12 +15236,11 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     display: inline-flex;
 }
 
-/* .header-wrapper {
-
+.header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-} */
+}
 
 .pc-header .header-wrapper {
     display: flex;
