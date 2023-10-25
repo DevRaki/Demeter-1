@@ -11,23 +11,23 @@ import '../fonts//material.css'
 
 function Form() {
   return (
-    <section class="pc-container">
-    <div class="pcoded-content">
+    <section className="pc-container">
+    <div className="pcoded-content">
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
+        <div className="row">
+            <div className="col-md-12">
+                <div className="card">
+                    <div className="card-header">
                         <h5>Registro de proveedores</h5>
                     </div>
-                    <div class="card-body">
+                    <div className="card-body">
                         {/* <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields
                 (function() {
                     'use strict';
                     window.addEventListener('load', function() {
                         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                        var forms = document.getElementsByClassName('needs-validation');
+                        var forms = document.getElementsByclassName('needs-validation');
                         // Loop over them and prevent submission
                         var validation = Array.prototype.filter.call(forms, function(form) {
                             form.addEventListener('submit', function(event) {
@@ -41,16 +41,16 @@ function Form() {
                     }, false);
                 })();
             </script> */}
-                        <form class="was-validated">
-                        {/*     <div class="mb-3">
-                                <label for="validationTextarea" class="form-label">Textarea</label>
-                                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-                                <div class="invalid-feedback">
+                        <form className="was-validated">
+                        {/*     <div className="mb-3">
+                                <label for="validationTextarea" className="form-label">Textarea</label>
+                                <textarea className="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                                <div className="invalid-feedback">
                                     Please enter a message in the textarea.
                                 </div>
                             </div> */}
 
-                        <div class="form-group col-md-6">
+                        <div className="form-group col-md-6">
                         <div className="mb-3">
                             <label htmlFor="tipoDocumento" className="form-label">Tipo de documento</label>
                             <select
@@ -67,7 +67,7 @@ function Form() {
                         </div>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div className="form-group col-md-6">
                     <label htmlFor="documento" className="form-label">Documento</label>
                     <input
                         type="text"
@@ -78,7 +78,7 @@ function Form() {
                     />
                 </div>
 
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="nombre" className="form-label">Nombre</label>
                     <input
                         type="text"
@@ -89,7 +89,7 @@ function Form() {
                     />
                 </div>
 
-                <div class="form-group col-md-6 ">
+                <div className="form-group col-md-6 ">
                     <label htmlFor="empresa" className="form-label">Empresa</label>
                     <input
                         type="text"
@@ -100,7 +100,7 @@ function Form() {
                     />
                 </div>
 
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="telefono" className="form-label">Teléfono</label>
                     <input
                         type="tel"
@@ -111,7 +111,7 @@ function Form() {
                     />
                 </div>
 
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="email" className="form-label">Email</label>
                     <input
                         type="email"
@@ -122,7 +122,7 @@ function Form() {
                     />
                 </div>
 
-                <div class="form-group col-md-6">
+                <div className="form-group col-md-6">
                     <label htmlFor="ciudad" className="form-label">Ciudad</label>
                     <input
                         type="text"
@@ -134,8 +134,8 @@ function Form() {
                 </div>
                     
                          
-                            <div class="mb-3">
-                                <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+                            <div className="mb-3">
+                                <button className="btn btn-primary" type="submit" disabled>Submit form</button>
                             </div>
                         </form>
                     </div>
@@ -143,28 +143,28 @@ function Form() {
             </div>
         
 
-            <div class="col-sm-12">
+            <div className="col-sm-12">
 
-                <div class="card">
-                    <div class="card-header">
+                <div className="card">
+                    <div className="card-header">
                         <h5>Visualización del proveedor</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-primary"><i class="mr-2" data-feather="thumbs-up"></i>Registrar</button>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <button type="button" className="btn btn-primary"><i className="mr-2" data-feather="thumbs-up"></i>Registrar</button>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="search" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buscador" />
+                            <div className="col-md-6">
+                                <div className="form-group">
+                                    <input type="search" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buscador" />
                                 </div>
                             </div>
                         </div>
 
 
-                        <div class="card-body table-border-style">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
+                        <div className="card-body table-border-style">
+                            <div className="table-responsive">
+                                <table className="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>Tipo</th>
@@ -186,9 +186,9 @@ function Form() {
                                             <td>3012649543</td>
                                             <td>Medellin</td>
                                             <td>estefania@gmaail.com</td>
-                                            <td><button type="button" class="btn  btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit/></i></button>
-                                                <button type="button" class="btn  btn-icon btn-secondary"><i data-feather="camera"><AiOutlineEye/></i></button>
-                                                <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle"><AiFillDelete/></i></button>
+                                            <td><button type="button" className="btn  btn-icon btn-primary"><BiEdit/></button>
+                                                <button type="button" className="btn  btn-icon btn-secondary"><AiOutlineEye/></button>
+                                                <button type="button" className="btn  btn-icon btn-success"><AiFillDelete/></button>
                                             </td>
                                         </tr>                        
                                     </tbody>
