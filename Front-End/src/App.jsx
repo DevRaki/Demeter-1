@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Header />
-      <Form />
+      {/* <Form /> */}
       <Routes>
         <Route path='/' element={<h1>DASHBOARD</h1>} />
       </Routes>

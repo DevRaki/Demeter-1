@@ -9,7 +9,7 @@ const Header = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const toggleDropdown = () => {
-		setShowDropdown(prevState => !prevState);
+		setShowDropdown(prevState => !prevState)
 	};
 
 	return (
@@ -38,37 +38,37 @@ const Header = () => {
 								</span>
 							</button>
 							{showDropdown && (
-								<div className="dropdown-menu dropdown-menu-right pc-h-dropdown">
-									<button
-										className="dropdown-item"
-										onClick={() => {
-											navigate('/');
-										}}
-									>
-										<ChromeReaderModeIcon />
-										<span>Editar perfil</span>
-									</button>
-									<br />
-									<button
-										className="dropdown-item"
-										onClick={() => {
-											navigate('/');
-										}}
-									>
-										<LockIcon />
-										<span>Cambio contraseña</span>
-									</button>
-									<br />
-									<button
-										className="dropdown-item"
-										onClick={() => {
-											navigate('/');
-										}}
-									>
-										<ExitToAppIcon />
-										<span>Logout</span>
-									</button>
-								</div>
+								<ul className="dropdown-menu dropdown-menu-right pc-h-dropdown">
+									<li className="dropdown-item">
+										<button
+											onClick={() => {
+												navigate('/');
+											}}
+										>
+											<ChromeReaderModeIcon />
+											<span>Editar perfil</span>
+										</button>
+									</li>
+									<li className="dropdown-item">
+										<button
+											onClick={() => {
+												navigate('/');
+											}}
+										>
+											<LockIcon />
+											<span>Cambio contraseña</span>
+										</button></li>
+									<li className="dropdown-item">
+										<button
+											onClick={() => {
+												navigate('/');
+											}}
+										>
+											<ExitToAppIcon />
+											<span>Logout</span>
+										</button>
+									</li>
+								</ul>
 							)}
 						</li>
 					</ul>

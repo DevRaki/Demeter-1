@@ -50,7 +50,11 @@ const Navbar = () => {
                                 }}
                                 className="pc-link"
                             >
-                                <DashboardIcon />
+                                <span className="pc-micon">
+                                    <i className="material-icons-two-tone">
+                                        <DashboardIcon />
+                                    </i>
+                                </span>
                                 <span className="pc-mtext">
                                     Dashboard
                                 </span>
@@ -66,7 +70,11 @@ const Navbar = () => {
                                 }}
                                 className="pc-link"
                             >
-                                <SecurityIcon />
+                                <span className="pc-micon">
+                                    <i className="material-icons-two-tone">
+                                        <SecurityIcon />
+                                    </i>
+                                </span>
                                 <span className="pc-mtext">
                                     Roles y permisos
                                 </span>
@@ -82,7 +90,11 @@ const Navbar = () => {
                                 }}
                                 className="pc-link"
                             >
-                                <PeopleIcon />
+                                <span className="pc-micon">
+                                    <i className="material-icons-two-tone">
+                                        <PeopleIcon />
+                                    </i>
+                                </span>
                                 <span className="pc-mtext">
                                     Empleados
                                 </span>
@@ -96,11 +108,15 @@ const Navbar = () => {
                                 onClick={toggleSubmenuCompras}
                                 className="pc-link"
                             >
-                                <i className="material-icons-two-tone"><StoreIcon /></i>
+                                <span className="pc-micon">
+                                    <i className="material-icons-two-tone">
+                                        <StoreIcon />
+                                    </i>
+                                </span>
                                 <span className="pc-mtext">
                                     Gestión de compras
                                 </span>
-                                <span className="pc-arrow"><ExpandMoreIcon /></span>
+                                <span className="pc-arrow"> <ExpandMoreIcon /></span>
                             </button>
                             {submenuComprasVisible && (
                                 <ul className="pc-submenu">
@@ -119,11 +135,15 @@ const Navbar = () => {
                                 onClick={toggleSubmenuVentas}
                                 className="pc-link"
                             >
-                                <ShoppingCartIcon />
+                                <span className="pc-micon">
+                                    <i className="material-icons-two-tone">
+                                        <ShoppingCartIcon />
+                                    </i>
+                                </span>
                                 <span className="pc-mtext">
                                     Gestión de ventas
                                 </span>
-                                <span className="pc-arrow"><ExpandMoreIcon /></span>
+                                <span className="pc-arrow"> <ExpandMoreIcon /></span>
                             </button>
                             {submenuVentasVisible && (
                                 <ul className="pc-submenu">

@@ -14891,7 +14891,7 @@ pre[class*="language-"]>code {
 .pc-sidebar {
     background: #1c232f;
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    width: 220px;
+    width: 250px;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -14927,7 +14927,7 @@ pre[class*="language-"]>code {
 }
 
 .pc-sidebar .pc-micon {
-    margin-right: 15px;
+    margin-right: 10px;
     height: 24px;
     display: inline-block;
     vertical-align: middle;
@@ -15226,7 +15226,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     color: #525b69;
     min-height: 70px;
     position: fixed;
-    left: 220px;
+    left: 250px;
     right: 0;
     z-index: 1025;
 }
@@ -15236,11 +15236,16 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     display: inline-flex;
 }
 
-.pc-header .header-wrapper {
+/* .header-wrapper {
+
     display: flex;
-    padding: 0 20px;
     justify-content: space-between;
     align-items: center;
+} */
+
+.pc-header .header-wrapper {
+    display: flex;
+    padding: 0 30px;
 }
 
 .pc-header .pc-h-item {
