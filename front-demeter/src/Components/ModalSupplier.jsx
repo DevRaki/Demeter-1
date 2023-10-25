@@ -1,14 +1,184 @@
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import { useSupplier } from '../Context/Supplier.context'; 
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
 
-function ModalSupplier({ onClose, onCreated }) {
-    const { register, handleSubmit, formState: { errors }, setError } = useForm();
-    const { createSupplier, supplier } = useSupplier();
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
+
+export default function ModalSupplier() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <div>ModalSupplier</div>
-  )
-}
+    <React.Fragment>
+      <Button onClick={handleOpen}>Open Child Modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...style, width: 600 }}>
+          <div>
+          <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Registro de proveedores</h5>
+                    </div>
+                    <div class="card-body">
+                        {/* <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script> */}
+                        <form class="was-validated">
+                        {/*     <div class="mb-3">
+                                <label for="validationTextarea" class="form-label">Textarea</label>
+                                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                                <div class="invalid-feedback">
+                                    Please enter a message in the textarea.
+                                </div>
+                            </div> */}
 
-export default ModalSupplier
+                        <div className="control">
+                        <div class="form-group col-md-6">
+                        <div className="mb-3">
+                            <label htmlFor="tipoDocumento" className="form-label">Tipo de documento</label>
+                            <select
+                                className="form-select"
+                                id="tipoDocumento"
+                                name="tipoDocumento"                                         
+                                required
+                            >
+                                <option value="" disabled>Selecciona un tipo de documento</option>
+                                <option value="cedulaCiudadania">Cédula de ciudadanía</option>
+                                <option value="cedulaExtranjeria">Cédula de extranjería</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                    <label htmlFor="documento" className="form-label">Documento</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="documento"
+                        name="documento"
+                        required
+                    />
+                </div>
+
+                        </div>
+                       
+             
+
+                <div className='control'>
+                    <div class="form-group col-md-6">
+                        <label htmlFor="nombre" className="form-label">Nombre</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="nombre"
+                            name="nombre"
+                            required
+                        />
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label htmlFor="empresa" className="form-label">Empresa</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="empresa"
+                        name="empresa"
+                        required
+                    />
+                </div>
+                </div>
+                
+
+                
+
+                <div className="control">
+                <div class="form-group col-md-6">
+                    <label htmlFor="telefono" className="form-label">Teléfono</label>
+                    <input
+                        type="tel"
+                        className="form-control"
+                        id="telefono"
+                        name="telefono"
+                        required
+                    />
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label htmlFor="email" className="form-label">Email</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        name="email"
+                        required
+                    />
+                </div>
+                </div>
+                <div className="city">
+                <div class="form-group col-md-6">
+                    <label htmlFor="ciudad" className="form-label">Ciudad</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="ciudad"
+                        name="ciudad"
+                        required
+                    />
+                </div>
+                </div>                              
+                         
+                          <div class="mb-3">
+                                <button class="btn btn-primary" type="submit" disabled>Confirmar</button>
+                                <button class="btn btn-primary" type="submit" disabled>Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <Button onClick={handleClose}>Close Child Modal</Button>
+        </Box>
+      </Modal>
+    </React.Fragment>
+  );
+}
