@@ -14917,6 +14917,17 @@ pre[class*="language-"]>code {
     margin-bottom: 0;
 }
 
+.control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.city{
+    display: flex;
+    justify-content: center;
+}
+
 .pc-sidebar .pc-caption span:not(.badge) {
     display: block;
     color: #67758A;
