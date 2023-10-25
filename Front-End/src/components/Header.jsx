@@ -1,11 +1,11 @@
-import react, { useState } from 'react';
+import React, { useState } from 'react';
 import '../css/style.css'
 import '../css/landing.css'
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import LockIcon from '@mui/icons-material/Lock';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-const Encabezado = () => {
+const Header = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const toggleDropdown = () => {
@@ -13,7 +13,7 @@ const Encabezado = () => {
 	};
 
 	return (
-		<header className="pc-header ">
+		<header className="pc-header">
 			<div className="header-wrapper">
 				<div className="mr-auto pc-mob-drp">
 					<ul className="list-unstyled">
@@ -79,4 +79,4 @@ const Encabezado = () => {
 	);
 };
 
-export default Encabezado;
+export default Header;
