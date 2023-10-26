@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from '../img/logo.png'
 import '../css/style.css'
 import '../css/landing.css'
@@ -14,6 +14,7 @@ const Navbar = () => {
 
     const [submenuComprasVisible, setSubmenuComprasVisible] = useState(false);
     const [submenuVentasVisible, setSubmenuVentasVisible] = useState(false);
+    const dropdownRef = useRef();
 
     const navigate = useNavigate();
 
@@ -24,6 +25,25 @@ const Navbar = () => {
     const toggleSubmenuVentas = () => {
         setSubmenuVentasVisible(prevStateV => !prevStateV);
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setSubmenuComprasVisible(false);
+                setSubmenuVentasVisible(false);
+            }
+        };
+
+        if (submenuComprasVisible || submenuVentasVisible) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [submenuComprasVisible, submenuVentasVisible]);
 
     return (
         <nav className="pc-sidebar">
@@ -103,7 +123,7 @@ const Navbar = () => {
                         <li className="pc-item pc-caption">
                             <span>Gestión de compras</span>
                         </li>
-                        <li className="pc-item pc-hasmenu">
+                        <li className="pc-item pc-hasmenu" ref={dropdownRef}>
                             <button
                                 onClick={toggleSubmenuCompras}
                                 className="pc-link"
@@ -130,7 +150,7 @@ const Navbar = () => {
                         <li className="pc-item pc-caption">
                             <span>Gestión de ventas</span>
                         </li>
-                        <li className="pc-item pc-hasmenu">
+                        <li className="pc-item pc-hasmenu" ref={dropdownRef}>
                             <button
                                 onClick={toggleSubmenuVentas}
                                 className="pc-link"

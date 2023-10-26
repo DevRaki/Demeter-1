@@ -3902,6 +3902,7 @@ fieldset:disabled .btn {
     margin-left: 0;
 }
 
+/* Se juntan las dos clases llamadas igual */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -3909,16 +3910,18 @@ fieldset:disabled .btn {
     z-index: 1000;
     display: none;
     min-width: 12rem;
-    padding: 0.1rem 0;
     margin: 0.75rem 0 0;
     font-size: 0.875rem;
-    color: #161c25;
+    color: #ffffff;
     text-align: left;
-    list-style: none;
-    background-color: #e4e4e4;
+    background-color: #1c232f;
     background-clip: padding-box;
     border: 1 solid #0000;
-    border-radius: 4px;
+    padding: 10px 0;
+    box-shadow: 0 4px 24px 0 rgba(62, 57, 107, 0.18);
+    border-radius: 2px;
+    line-height: 1.5;
+    width: 210px;
 }
 
 .dropdown-menu-left {
@@ -4098,7 +4101,7 @@ fieldset:disabled .btn {
     padding: 0.65rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #252e3f;
+    color: #ffffff;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
@@ -15220,6 +15223,12 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     }
 }
 
+/* Para el tamaño del h3 del header */
+.pc-tamaño {
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .pc-header {
     background: #fff;
     box-shadow: 0 1px 0 0 #f1f1f1;
@@ -15230,16 +15239,12 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     right: 0;
     z-index: 1025;
     padding: 0 30px;
+    display: flex;
 }
 
 .pc-header ul {
     margin-bottom: 0;
     display: inline-flex;
-}
-
-.pc-header {
-    display: flex;
-    padding: 0 30px;
 }
 
 .pc-header .pc-h-item {
@@ -18262,13 +18267,6 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
 
 .dropdown-toggle.arrow-none:after {
     display: none;
-}
-
-.dropdown-menu {
-    padding: 15px 0;
-    box-shadow: 0 4px 24px 0 rgba(62, 57, 107, 0.18);
-    border: none;
-    border-radius: 2px;
 }
 
 .pc-header .dropdown-menu {

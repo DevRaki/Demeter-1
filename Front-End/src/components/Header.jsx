@@ -10,15 +10,16 @@ const Header = () => {
 
 	const toggleDropdown = () => {
 		setShowDropdown(prevState => !prevState)
+
+		setTimeout(() => setShowDropdown(false), 5000);
 	};
 
 	return (
 		<header className="pc-header">
-			{/* <div className="header-wrapper"> */}
 			<div className="mr-auto pc-mob-drp">
 				<ul className="list-unstyled">
 					<li className="dropdown pc-h-item">
-						<h3><strong>DEMETER</strong></h3>
+						<h3><strong className='pc-tamaño'>DEMETER</strong></h3>
 					</li>
 				</ul>
 			</div>
@@ -38,7 +39,7 @@ const Header = () => {
 							</span>
 						</button>
 						{showDropdown && (
-							<ul className="dropdown-menu dropdown-menu-right pc-h-dropdown">
+							<ul className="dropdown-menu dropdown-menu-right pc-h-dropdown flex-column">
 								<li className="dropdown-item">
 									<button
 										onClick={() => {
@@ -80,8 +81,6 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-
-			{/* </div> */}
 		</header>
 	);
 };
