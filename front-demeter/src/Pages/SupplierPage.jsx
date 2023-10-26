@@ -9,26 +9,23 @@ import '../fonts/cryptofont.css'
 import '../fonts/feather.css'
 import '../fonts/fontawesome.css'
 import '../fonts//material.css'
-import ModalSupplier from '../Components/ModalSupplier.jsx';
+import CreateSupplier from '../Components/CreateSupplier.jsx';
 
-
-
-function Form() {
+function SupplierPage() {
     const { supplier, getSupplier, deleteSupplier } = useSupplier();
 
     useEffect(() => {
-        getSupplier();
+        getSupplier().then(console.log(supplier));;
       }, []);
 
   return (
-   
     <section class="pc-container">
     <div class="pcoded-content">
 
         <div class="row w-100">
             
         
-            
+             <div class="col-md-12">
             <div class=" w-100 col-sm-12">
 
                 <div class="card">
@@ -38,8 +35,7 @@ function Form() {
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                {/* <button type="button" class="btn btn-primary"><i class="mr-2" data-feather="thumbs-up"></i>Registrar</button> */}
-                                <ModalSupplier />
+                                <CreateSupplier />
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -95,8 +91,9 @@ function Form() {
 
 
     </div>
+    </div>
 </section>
   )
 }
 
-export default Form
+export default SupplierPage
