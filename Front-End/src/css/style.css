@@ -3909,15 +3909,15 @@ fieldset:disabled .btn {
     z-index: 1000;
     display: none;
     min-width: 12rem;
-    padding: 0.5rem 0;
-    margin: 0.125rem 0 0;
+    padding: 0.1rem 0;
+    margin: 0.75rem 0 0;
     font-size: 0.875rem;
     color: #161c25;
     text-align: left;
     list-style: none;
-    background-color: #ffff;
+    background-color: #e4e4e4;
     background-clip: padding-box;
-    border: 0 solid #0000;
+    border: 1 solid #0000;
     border-radius: 4px;
 }
 
@@ -4098,7 +4098,7 @@ fieldset:disabled .btn {
     padding: 0.65rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #293240;
+    color: #252e3f;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
@@ -4109,14 +4109,14 @@ fieldset:disabled .btn {
 .dropdown-item:focus {
     color: #ff6600;
     text-decoration: none;
-    background-color: #FFC49C;
+    background-color: #ffad72;
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
     color: #ff6600;
     text-decoration: none;
-    background-color: #FFC49C;
+    background-color: #ffad72;
 }
 
 .dropdown-item.disabled,
@@ -4148,23 +4148,23 @@ fieldset:disabled .btn {
 .dropdown-menu-dark {
     color: #dee2e6;
     background-color: #343a40;
-    border-color: rgba(0, 0, 0, 0.15);
+    border-color: #00000026;
 }
 
 .dropdown-menu-dark .dropdown-item {
-    color: #dee2e6;
+    color: #c9cccf;
 }
 
 .dropdown-menu-dark .dropdown-item:hover,
 .dropdown-menu-dark .dropdown-item:focus {
     color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: #ffffff26;
 }
 
 .dropdown-menu-dark .dropdown-item.active,
 .dropdown-menu-dark .dropdown-item:active {
     color: #ff6600;
-    background-color: #FDC8A5;
+    background-color: #ffad72;
 }
 
 .dropdown-menu-dark .dropdown-item.disabled,
@@ -15229,6 +15229,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     left: 250px;
     right: 0;
     z-index: 1025;
+    padding: 0 30px;
 }
 
 .pc-header ul {
@@ -15236,13 +15237,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     display: inline-flex;
 }
 
-.header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pc-header .header-wrapper {
+.pc-header {
     display: flex;
     padding: 0 30px;
 }
@@ -15546,7 +15541,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
         top: 70px;
     }
 
-    .pc-header.mob-header-active .header-wrapper {
+    .pc-header.mob-header-active  {
         background: #fff;
         position: relative;
         z-index: 5;
@@ -21456,7 +21451,7 @@ new-task label input[type=checkbox] {
 }
 
 .docs-options .dropdown-menu>li {
-    padding: 3px 20px;
+    padding: 5px 20px;
     font-size: 14px;
 }
 
