@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar.jsx'
 import SupplierPage from './Pages/SupplierPage.jsx'
 import { Supplier } from './Context/Supplier.context.jsx'
 import Login from './Pages/Login.jsx'
+import './App.css'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <Navbar/> 
     <Routes>
       <Route path='/supplier' element={<SupplierPage/>}/>
+      
       
     </Routes>
     </Supplier>

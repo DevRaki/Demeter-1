@@ -65,14 +65,6 @@ export default function CreateSupplier() {
                 })();
             </script> */}
                         <form class="was-validated">
-                        {/*     <div class="mb-3">
-                                <label for="validationTextarea" class="form-label">Textarea</label>
-                                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-                                <div class="invalid-feedback">
-                                    Please enter a message in the textarea.
-                                </div>
-                            </div> */}
-
                         <div className="control">
                         <div class="form-group col-md-6">
                         <div className="mb-3">
