@@ -17,20 +17,12 @@ function App() {
     <Navbar/> 
     <Routes>
       <Route path='/supplier' element={<SupplierPage/>}/>
-      
+     
       
     </Routes>
     </Supplier>
     </BrowserRouter>
    
-      
-
-   
-     
-
-  
-    
-     {/* <Login/> */}
     </>
   )
 }
