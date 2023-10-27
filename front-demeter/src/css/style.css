@@ -3908,16 +3908,18 @@ fieldset:disabled .btn {
     z-index: 1000;
     display: none;
     min-width: 12rem;
-    padding: 0.5rem 0;
-    margin: 0.125rem 0 0;
+    margin: 0.75rem 0 0;
     font-size: 0.875rem;
-    color: #293240;
+    color: #ffffff;
     text-align: left;
-    list-style: none;
-    background-color: #ffffff;
+    background-color: #1c232f;
     background-clip: padding-box;
-    border: 0 solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
+    border: 1 solid #0000;
+    padding: 10px 0;
+    box-shadow: 0 4px 24px 0 rgba(62, 57, 107, 0.18);
+    border-radius: 2px;
+    line-height: 1.5;
+    width: 210px;
 }
 
 .dropdown-menu-left {
@@ -4097,7 +4099,7 @@ fieldset:disabled .btn {
     padding: 0.65rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #293240;
+    color: #ffffff;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
@@ -4108,14 +4110,14 @@ fieldset:disabled .btn {
 .dropdown-item:focus {
     color: #ff6600;
     text-decoration: none;
-    background-color: #FFC49C;
+    background-color: #ffad72;
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
     color: #ff6600;
     text-decoration: none;
-    background-color: #FFC49C;
+    background-color: #ffad72;
 }
 
 .dropdown-item.disabled,
@@ -4147,23 +4149,23 @@ fieldset:disabled .btn {
 .dropdown-menu-dark {
     color: #dee2e6;
     background-color: #343a40;
-    border-color: rgba(0, 0, 0, 0.15);
+    border-color: #00000026;
 }
 
 .dropdown-menu-dark .dropdown-item {
-    color: #dee2e6;
+    color: #c9cccf;
 }
 
 .dropdown-menu-dark .dropdown-item:hover,
 .dropdown-menu-dark .dropdown-item:focus {
     color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: #ffffff26;
 }
 
 .dropdown-menu-dark .dropdown-item.active,
 .dropdown-menu-dark .dropdown-item:active {
     color: #ff6600;
-    background-color: #FDC8A5;
+    background-color: #ffad72;
 }
 
 .dropdown-menu-dark .dropdown-item.disabled,
@@ -14890,7 +14892,7 @@ pre[class*="language-"]>code {
 .pc-sidebar {
     background: #1c232f;
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    width: 280px;
+    width: 250px;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -14917,13 +14919,14 @@ pre[class*="language-"]>code {
     margin-bottom: 0;
 }
 
+/* ===== BORRAR ===== */
 .control {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.city{
+.city {
     display: flex;
     justify-content: center;
 }
@@ -14937,7 +14940,7 @@ pre[class*="language-"]>code {
 }
 
 .pc-sidebar .pc-micon {
-    margin-right: 15px;
+    margin-right: 10px;
     height: 24px;
     display: inline-block;
     vertical-align: middle;
@@ -15230,25 +15233,27 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
     }
 }
 
+.pc-tamaño {
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .pc-header {
     background: #fff;
     box-shadow: 0 1px 0 0 #f1f1f1;
     color: #525b69;
     min-height: 70px;
     position: fixed;
-    left: 280px;
+    left: 250px;
     right: 0;
     z-index: 1025;
+    padding: 0 30px;
+    display: flex;
 }
 
 .pc-header ul {
     margin-bottom: 0;
     display: inline-flex;
-}
-
-.pc-header .header-wrapper {
-    display: flex;
-    padding: 0 30px;
 }
 
 .pc-header .pc-h-item {
@@ -15550,7 +15555,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
         top: 70px;
     }
 
-    .pc-header.mob-header-active .header-wrapper {
+    .pc-header.mob-header-active {
         background: #fff;
         position: relative;
         z-index: 5;
@@ -15645,7 +15650,7 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
 
 .pc-container {
     position: relative;
-    top: 70px;
+    top: 10%;
     margin-left: 280px;
     min-height: calc(100vh - 70px);
 }
@@ -18271,13 +18276,6 @@ body:not(.minimenu) .pc-sidebar .pc-submenu .pc-submenu .pc-submenu>.pc-item:bef
 
 .dropdown-toggle.arrow-none:after {
     display: none;
-}
-
-.dropdown-menu {
-    padding: 15px 0;
-    box-shadow: 0 4px 24px 0 rgba(62, 57, 107, 0.18);
-    border: none;
-    border-radius: 2px;
 }
 
 .pc-header .dropdown-menu {
@@ -21460,7 +21458,7 @@ new-task label input[type=checkbox] {
 }
 
 .docs-options .dropdown-menu>li {
-    padding: 3px 20px;
+    padding: 5px 20px;
     font-size: 14px;
 }
 

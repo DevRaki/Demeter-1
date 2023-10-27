@@ -1,49 +1,88 @@
-import React from 'react'
-import users from '../img/users.png'
+import React, { useState } from 'react';
+import '../css/style.css'
+import '../css/landing.css'
+import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
+import LockIcon from '@mui/icons-material/Lock';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-function Header() {
-  return (
-    <header class="pc-header ">
-		<div class="header-wrapper">
-			<div class="mr-auto pc-mob-drp">
-				<ul class="list-unstyled">
-					<li class="dropdown pc-h-item">
-                        <h3>Gestión de "Nombre del Modulo"</h3>
+const Header = () => {
+	const [showDropdown, setShowDropdown] = useState(false);
+
+	const toggleDropdown = () => {
+		setShowDropdown(prevState => !prevState)
+
+		setTimeout(() => setShowDropdown(false), 5000);
+	};
+
+	return (
+		<header className="pc-header">
+			<div className="mr-auto pc-mob-drp">
+				<ul className="list-unstyled">
+					<li className="dropdown pc-h-item">
+						<h3><strong className='pc-tamaño'>DEMETER</strong></h3>
 					</li>
 				</ul>
 			</div>
-			<div class="ml-auto">
-				<ul class="list-unstyled">
-					<li class="dropdown pc-h-item">
-						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<img src={users} alt="user-image" class="user-avtar"/>
+			<div className="ml-auto">
+				<ul className="list-unstyled">
+					<li className="dropdown pc-h-item">
+						<button
+							className="pc-head-link dropdown-toggle arrow-none mr-0"
+							role="button"
+							aria-haspopup="false"
+							aria-expanded="false"
+							onClick={toggleDropdown}
+						>
 							<span>
-								<span class="user-name">Alvaro Perez N</span>
-								<span class="user-desc">Administrator</span>
+								<span className="user-name">Samuel Rios A.</span>
+								<span className="user-desc">Administrator</span>
 							</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right pc-h-dropdown">				
-							<a href="auth-signin.html" class="dropdown-item">
-								<i class="material-icons-two-tone">chrome_reader_mode</i>
-								<span>Editar perfil</span>
-							</a>
-                            <a href="auth-signin.html" class="dropdown-item">
-								<i class="material-icons-two-tone">lock</i>
-								<span>Cambio contraseña</span>
-							</a>
-                            <br/>
-                            <a href="auth-signin.html" class="dropdown-item">
-								<i class="material-icons-two-tone">exit_to_app</i>
-								<span>Logout</span>
-							</a>
-						</div>
+						</button>
+						{showDropdown && (
+							<ul className="dropdown-menu dropdown-menu-right pc-h-dropdown flex-column">
+								<li className="dropdown-item">
+									<button
+										onClick={() => {
+											navigate('/');
+										}}
+									>
+										<i class="material-icons-two-tone">
+											<ChromeReaderModeIcon />
+										</i>
+										<span>Editar perfil</span>
+									</button>
+								</li><br />
+								<li className="dropdown-item">
+									<button
+										onClick={() => {
+											navigate('/');
+										}}
+									>
+										<i class="material-icons-two-tone">
+											<LockIcon />
+										</i>
+										<span>Cambio contraseña</span>
+									</button>
+								</li><br />
+								<li className="dropdown-item">
+									<button
+										onClick={() => {
+											navigate('/');
+										}}
+									>
+										<i class="material-icons-two-tone">
+											<ExitToAppIcon />
+										</i>
+										<span>Logout</span>
+									</button>
+								</li>
+							</ul>
+						)}
 					</li>
 				</ul>
 			</div>
+		</header>
+	);
+};
 
-		</div>
-	</header>
-  )
-}
-
-export default Header
+export default Header;
