@@ -25233,6 +25233,11 @@ new-task label input[type=checkbox] {
     visibility: visible;
 }
 
+.buttonconfirm{
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     .pc-wizard.wizard>.steps a:after {
         right: 15px;

@@ -17,7 +17,7 @@ const style = {
   pb: 3,
 };
 
-export default function ModalSupplier() {
+export default function CreateSupplier() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -28,7 +28,8 @@ export default function ModalSupplier() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Open Child Modal</Button>
+        <button type="button" class="btn btn-primary" onClick={handleOpen}><i class="mr-2" data-feather="thumbs-up"></i>Registrar</button> 
+    
       <Modal
         open={open}
         onClose={handleClose}
@@ -75,7 +76,7 @@ export default function ModalSupplier() {
                         <div className="control">
                         <div class="form-group col-md-6">
                         <div className="mb-3">
-                            <label htmlFor="tipoDocumento" className="form-label">Tipo de documento</label>
+                            <label htmlFor="tipoDocumento" className="form-label mt-3">Tipo de documento</label>
                             <select
                                 className="form-select"
                                 id="tipoDocumento"
@@ -87,6 +88,7 @@ export default function ModalSupplier() {
                                 <option value="cedulaExtranjeria">Cédula de extranjería</option>
                                 <option value="pasaporte">Pasaporte</option>
                             </select>
+                            <div class="invalid-feedback">Ingrese el tipo de documento</div>
                         </div>
                     </div>
 
@@ -166,17 +168,19 @@ export default function ModalSupplier() {
                     />
                 </div>
                 </div>                              
-                         
-                          <div class="mb-3">
-                                <button class="btn btn-primary" type="submit" disabled>Confirmar</button>
-                                <button class="btn btn-primary" type="submit" disabled>Cancelar</button>
+                         <div className="buttonconfirm">
+                         <div class="mb-3">
+                                <button class="btn btn-primary mr-5" type="submit" disabled>Confirmar</button>
+                                <button class="btn btn-primary" onClick={handleClose} type="submit" >Cancelar</button>
                             </div>
+                         </div>
+                         
                         </form>
                     </div>
                 </div>
             </div>
           </div>
-          <Button onClick={handleClose}>Close Child Modal</Button>
+   
         </Box>
       </Modal>
     </React.Fragment>
