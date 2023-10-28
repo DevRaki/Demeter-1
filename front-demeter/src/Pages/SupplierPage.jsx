@@ -57,6 +57,7 @@ function SupplierPage() {
                                             <th>Telefono</th>
                                             <th>Ciudad</th>
                                             <th>Email</th>
+                                            <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -70,11 +71,12 @@ function SupplierPage() {
                                         <td>{supplierItem.Phone}</td>
                                         <td>{supplierItem.City}</td>
                                         <td>{supplierItem.Email}</td>
+                                        <td>{supplierItem.State}</td>
                                         
                                         
                                             <td><button type="button" class="btn  btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit/></i></button>
                                                 <button type="button" class="btn  btn-icon btn-secondary"><i data-feather="camera"><AiOutlineEye/></i></button>
-                                                <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle"><AiFillDelete/></i></button>
+                                                <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle"><MdToggleOn/></i></button>
                                             </td>
                                         </tr>    
                                        ))}               
