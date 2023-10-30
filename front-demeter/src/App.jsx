@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './index.css'
 
-// Context
 import { User } from './Context/User.context.jsx'
 import { Supplier } from './Context/Supplier.context.jsx'
 

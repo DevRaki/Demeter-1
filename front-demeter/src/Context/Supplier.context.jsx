@@ -36,6 +36,7 @@ export function Supplier({ children }) {
     const createSupplier = async (supplie) => {
         try {
             const res = await createSupplierRequest(supplie);
+            console.log(res.data);
             getSupplier();
         } catch (error) {
             console.error(error);
