@@ -14,40 +14,20 @@ const Navbar = () => {
 
     const [submenuComprasVisible, setSubmenuComprasVisible] = useState(false);
     const [submenuVentasVisible, setSubmenuVentasVisible] = useState(false);
-    const dropdownRef = useRef();
 
     const navigate = useNavigate();
 
     const toggleSubmenuCompras = () => {
         setSubmenuComprasVisible(prevStateC => !prevStateC);
 
-        setTimeout(() => setSubmenuComprasVisible(false), 20000);
+        setTimeout(() => setSubmenuComprasVisible(false), 5000);
     };
 
     const toggleSubmenuVentas = () => {
         setSubmenuVentasVisible(prevStateV => !prevStateV);
 
-        setTimeout(() => setSubmenuComprasVisible(false), 20000);
+        setTimeout(() => setSubmenuComprasVisible(false), 5000);
     }
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setSubmenuComprasVisible(false);
-                setSubmenuVentasVisible(false);
-            }
-        };
-
-        if (submenuComprasVisible || submenuVentasVisible) {
-            document.addEventListener('mousedown', handleClickOutside);
-        } else {
-            document.removeEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [submenuComprasVisible, submenuVentasVisible]);
 
     return (
         <nav className="pc-sidebar">
@@ -90,7 +70,7 @@ const Navbar = () => {
                         <li className="pc-item pc-hasmenu">
                             <button
                                 onClick={() => {
-                                    navigate('/');
+                                    navigate('/setting');
                                 }}
                                 className="pc-link"
                             >
@@ -110,7 +90,7 @@ const Navbar = () => {
                         <li className="pc-item">
                             <button
                                 onClick={() => {
-                                    navigate('/');
+                                    navigate('/user');
                                 }}
                                 className="pc-link"
                             >
@@ -127,7 +107,7 @@ const Navbar = () => {
                         <li className="pc-item pc-caption">
                             <span>Gestión de compras</span>
                         </li>
-                        <li className="pc-item pc-hasmenu" ref={dropdownRef}>
+                        <li className="pc-item pc-hasmenu">
                             <button
                                 onClick={toggleSubmenuCompras}
                                 className="pc-link"
@@ -144,17 +124,39 @@ const Navbar = () => {
                             </button>
                             {submenuComprasVisible && (
                                 <ul className="pc-submenu">
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Categria insumos</button></li>
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Insumos</button></li>
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Proveedores</button></li>
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Compras</button></li>
+                                    <li
+                                        className="pc-item"
+                                    >
+                                        <button onClick={() => { navigate('/category_supplies') }} className="pc-link"
+                                        >
+                                            Categria insumos
+                                        </button>
+                                    </li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/supplies') }} className="pc-link">
+                                            Insumos
+                                        </button>
+                                    </li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/supplier') }} className="pc-link">
+                                            Proveedores
+                                        </button>
+                                    </li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/shopping') }} className="pc-link">
+                                            Compras
+                                        </button>
+                                    </li>
                                 </ul>
                             )}
                         </li>
                         <li className="pc-item pc-caption">
                             <span>Gestión de ventas</span>
                         </li>
-                        <li className="pc-item pc-hasmenu" ref={dropdownRef}>
+                        <li className="pc-item pc-hasmenu">
                             <button
                                 onClick={toggleSubmenuVentas}
                                 className="pc-link"
@@ -171,10 +173,30 @@ const Navbar = () => {
                             </button>
                             {submenuVentasVisible && (
                                 <ul className="pc-submenu">
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Categoria producto</button></li>
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Producto</button></li>
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Meseros</button></li>
-                                    <li className="pc-item"><button onClick={() => { navigate('/') }} className="pc-link">Venta</button></li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/category_product') }} className="pc-link">
+                                            Categoria producto
+                                        </button>
+                                    </li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/product') }} className="pc-link">
+                                            Producto
+                                        </button>
+                                    </li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/waiter') }} className="pc-link">
+                                            Meseros
+                                        </button>
+                                    </li>
+                                    <li
+                                        className="pc-item">
+                                        <button onClick={() => { navigate('/sale') }} className="pc-link">
+                                            Venta
+                                        </button>
+                                    </li>
                                 </ul>
                             )}
                         </li>
