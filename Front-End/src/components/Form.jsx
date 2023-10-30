@@ -4,6 +4,13 @@ import {AiOutlineEye, AiFillDelete} from 'react-icons/ai'
 import { MdToggleOn, MdToggleOff } from "react-icons/md";
 import '../css/style.css'
 import '../css/landing.css'
+<<<<<<< Updated upstream
+=======
+import '../fonts/cryptofont.css'
+import '../fonts/feather.css'
+import '../fonts/fontawesome.css'
+import '../fonts/material.css'
+>>>>>>> Stashed changes
 
 function Form() {
   return (
