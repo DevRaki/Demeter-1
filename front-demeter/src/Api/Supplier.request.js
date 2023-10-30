@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from './Axios.js';
 
 export const getSupplierRequest = () => axios.get('/supplier');
 export const getSupplieRequest = (ID_Supplier) => axios.get(`/supplier/${ID_Supplier}`);  
