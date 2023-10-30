@@ -21,8 +21,15 @@ const style = {
 
 export default function CreateSupplier({onClose, onCreated}) {
   const {register, handleSubmit, setError, formState: {errors , isValid }} = useForm();
-  const {createSupplier, supplier} = useSupplier();
+  const {createSupplier, supplier, updateSupplies} = useSupplier();
   const [open, setOpen] = React.useState(false);
+  const [supplyToEdit, setSupplyToEdit] = useState(null);
+
+  const handleEdit = (supply) => {
+    setSupplyToEdit(supply);
+  };
+
+
 
   const onSubmit = handleSubmit(async (values) => {
     const isDocumentoDuplicate = supplier.some(supplier => supplier.Document === values.Document);
@@ -49,7 +56,7 @@ export default function CreateSupplier({onClose, onCreated}) {
     if (isBusinessDuplicate) {
         setError('Name_Business', {
             type: 'manual',
-            message: 'La nombre de la empresa ya existe.'
+            message: 'El nombre de la empresa ya existe.'
         });
         return;
     }
@@ -64,7 +71,7 @@ export default function CreateSupplier({onClose, onCreated}) {
 
     createSupplier(values);
 
-
+    setOpen(false)
 });
 
 
@@ -182,7 +189,6 @@ export default function CreateSupplier({onClose, onCreated}) {
                     <label htmlFor="Name_Business" className="form-label">Empresa</label>
                     <input
                     {...register('Name_Business',{
-                        required: false,
                         pattern: {
                             value: /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ\s]*[a-záéíóúñ]$/,
                             message: 'El nombre de la empresa debe tener la primera letra en mayúscula y solo letras.'

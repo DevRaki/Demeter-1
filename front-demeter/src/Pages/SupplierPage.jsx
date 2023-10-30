@@ -10,10 +10,15 @@ import '../fonts/feather.css'
 import '../fonts/fontawesome.css'
 import '../fonts//material.css'
 import CreateSupplier from '../Components/CreateSupplier.jsx';
+import DeleteSupplier from '../Components/DeleteSupplier';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 function SupplierPage() {
-    const { supplier, getSupplier, deleteSupplier } = useSupplier();
+    const { supplier, getSupplier, deleteSupplier, toggleSupplyStatus } = useSupplier();
     const [searchTerm, setSearchTerm] = useState('');
+
+    const Status = supplier.State ? "" : "Inhabilitado";
 
     useEffect(() => {
         getSupplier().then(console.log(supplier));;
@@ -28,11 +33,6 @@ function SupplierPage() {
         const searchString = `${Type_Document} ${Document} ${Name_Supplier} ${Name_Business} ${Phone} ${City} ${Email} ${State}`.toLowerCase();
         return searchString.includes(searchTerm.toLowerCase());
     });
-
-  
-
-    
- 
 
   return (
     <section class="pc-container">
@@ -52,6 +52,7 @@ function SupplierPage() {
                         <div class="row">
                             <div class="col-md-6">
                                 <CreateSupplier />
+                       
                               
                             </div>
                             <div class="col-md-6">
@@ -95,17 +96,28 @@ function SupplierPage() {
                                         <td>{supplierItem.Phone}</td>
                                         <td>{supplierItem.City}</td>
                                         <td>{supplierItem.Email}</td>
-                                        <td>{supplierItem.State}</td>
+                                        <td className={`${Status}`}>{supplierItem.State ? 'Habilitado' : 'Deshabilitado'}</td>
                                         
                                         
-                                            <td><button type="button" class="btn  btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit/></i></button>
-                                                <button type="button" class="btn  btn-icon btn-secondary"><i data-feather="camera"><AiFillDelete/></i></button>
-                                                <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle"><MdToggleOn/></i></button>
+                                            <td className='flex items-center'>
+                                                <button type="button" class="btn  btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit /></i></button>
+                                                <DeleteSupplier />
+                                                <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle" > 
+                                                    {supplier.State ? (
+                                                        <MdToggleOn className={`${Status}`}/>
+
+                                                    ): (
+                                                        <MdToggleOff className={`${Status}`} />
+                                                    ) }
+                                                    </i> </button>
                                             </td>
                                         </tr>    
                                        ))}               
                                     </tbody>
                                 </table>
+                                <Stack spacing={3} className='pagination'>
+                                <Pagination className='pagination' count={5} showFirstButton showLastButton />
+                                </Stack>
                             </div>
                         </div>
 
