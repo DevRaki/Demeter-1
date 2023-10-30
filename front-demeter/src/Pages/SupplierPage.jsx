@@ -10,7 +10,6 @@ import '../fonts/feather.css'
 import '../fonts/fontawesome.css'
 import '../fonts//material.css'
 import CreateSupplier from '../Components/CreateSupplier.jsx';
-import DeleteSupplier from '../Components/DeleteSupplier.jsx'
 
 function SupplierPage() {
     const { supplier, getSupplier, deleteSupplier } = useSupplier();
