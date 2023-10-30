@@ -26,7 +26,7 @@ const Navbar = () => {
     const toggleSubmenuVentas = () => {
         setSubmenuVentasVisible(prevStateV => !prevStateV);
 
-        setTimeout(() => setSubmenuComprasVisible(false), 5000);
+        setTimeout(() => setSubmenuVentasVisible(false), 5000);
     }
 
     return (

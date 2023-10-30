@@ -12,7 +12,7 @@ export const useUser = () => {
     return context;
 }
 
-export function User({ children }) {
+export const User = ({ children }) => {
     const [user, setUser] = useState([]);
 
     const getUsers = async () => {
