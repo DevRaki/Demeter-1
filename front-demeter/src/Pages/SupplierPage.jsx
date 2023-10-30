@@ -10,13 +10,30 @@ import '../fonts/feather.css'
 import '../fonts/fontawesome.css'
 import '../fonts//material.css'
 import CreateSupplier from '../Components/CreateSupplier.jsx';
+import DeleteSupplier from '../Components/DeleteSupplier.jsx'
 
 function SupplierPage() {
     const { supplier, getSupplier, deleteSupplier } = useSupplier();
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         getSupplier().then(console.log(supplier));;
       }, []);
+
+      const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredSuppliers = supplier.filter((supplierItem) => {
+        const { Type_Document, Document, Name_Supplier, Name_Business, Phone, City, Email, State } = supplierItem;
+        const searchString = `${Type_Document} ${Document} ${Name_Supplier} ${Name_Business} ${Phone} ${City} ${Email} ${State}`.toLowerCase();
+        return searchString.includes(searchTerm.toLowerCase());
+    });
+
+  
+
+    
+ 
 
   return (
     <section class="pc-container">
@@ -36,10 +53,18 @@ function SupplierPage() {
                         <div class="row">
                             <div class="col-md-6">
                                 <CreateSupplier />
+                              
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="search" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buscador" />
+                                    <input type="search" class="form-control" 
+                                    id="exampleInputEmail1" 
+                                    aria-describedby="emailHelp" 
+                                    placeholder="Buscador" 
+                                    value={searchTerm}
+                                    onChange={handleSearchChange}
+                                    
+                                   />
                                 </div>
                             </div>
                         </div>
@@ -62,7 +87,7 @@ function SupplierPage() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {supplier.map((supplierItem) => (
+                                    {filteredSuppliers.map((supplierItem) => (
                                     <tr key={supplierItem.ID_Supplier}>
                                         <td>{supplierItem.Type_Document}</td>
                                         <td>{supplierItem.Document}</td>
@@ -75,7 +100,7 @@ function SupplierPage() {
                                         
                                         
                                             <td><button type="button" class="btn  btn-icon btn-primary"><i data-feather="thumbs-up"><BiEdit/></i></button>
-                                                <button type="button" class="btn  btn-icon btn-secondary"><i data-feather="camera"><AiOutlineEye/></i></button>
+                                                <button type="button" class="btn  btn-icon btn-secondary"><i data-feather="camera"><AiFillDelete/></i></button>
                                                 <button type="button" class="btn  btn-icon btn-success"><i data-feather="check-circle"><MdToggleOn/></i></button>
                                             </td>
                                         </tr>    

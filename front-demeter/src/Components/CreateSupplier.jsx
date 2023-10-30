@@ -19,15 +19,16 @@ const style = {
   pb: 3,
 };
 
-export default function CreateSupplier() {
-  const {register, handleSubmit, formState: {errors, setError }} = useForm();
+export default function CreateSupplier({onClose, onCreated}) {
+  const {register, handleSubmit, setError, formState: {errors , isValid }} = useForm();
   const {createSupplier, supplier} = useSupplier();
-  const {selectedType, setSelectedType} = useState();
   const [open, setOpen] = React.useState(false);
 
   const onSubmit = handleSubmit(async (values) => {
     const isDocumentoDuplicate = supplier.some(supplier => supplier.Document === values.Document);
     const isEmailDuplicate = supplier.some(supplier => supplier.Email === values.Email);
+    const isBusinessDuplicate = supplier.some(supplier => supplier.Name_Business === values.Name_Business);
+    const isPhoneDuplicate = supplier.some(supplier => supplier.Phone === values.Phone);
 
     if (isDocumentoDuplicate) {
         setError('Document', {
@@ -40,12 +41,29 @@ export default function CreateSupplier() {
     if (isEmailDuplicate) {
         setError('Email', {
             type: 'manual',
-            message: 'El correo del usuario ya existe.'
+            message: 'El correo del proveedor ya existe.'
+        });
+        return;
+    }
+
+    if (isBusinessDuplicate) {
+        setError('Name_Business', {
+            type: 'manual',
+            message: 'La nombre de la empresa ya existe.'
+        });
+        return;
+    }
+
+    if (isPhoneDuplicate) {
+        setError('Phone', {
+            type: 'manual',
+            message: 'La teléfono del proveedor ya existe.'
         });
         return;
     }
 
     createSupplier(values);
+
 
 });
 
@@ -109,9 +127,9 @@ export default function CreateSupplier() {
                                 required
                             >
                                 <option value="" disabled>Selecciona un tipo de documento</option>
-                                <option value="cedulaCiudadania">Cédula de ciudadanía</option>
-                                <option value="cedulaExtranjeria">Cédula de extranjería</option>
-                                <option value="pasaporte">Pasaporte</option>
+                                <option value="CC">Cédula de ciudadanía</option>
+                                <option value="CE">Cédula de extranjería</option>
+                                <option value="PB">Pasaporte</option>
                             </select>
                             {errors.Type_Document && (<p className='text-red-500'>{errors.Type_Document.message}</p>)}
                             <div class="invalid-feedback">Ingrese el tipo de documento</div>
@@ -159,10 +177,12 @@ export default function CreateSupplier() {
                         {errors.Name_Supplier && <p className="text-red-500">{errors.Name_Supplier.message}</p>}
                     </div>
 
+
                     <div class="form-group col-md-6">
                     <label htmlFor="Name_Business" className="form-label">Empresa</label>
                     <input
                     {...register('Name_Business',{
+                        required: false,
                         pattern: {
                             value: /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ\s]*[a-záéíóúñ]$/,
                             message: 'El nombre de la empresa debe tener la primera letra en mayúscula y solo letras.'
@@ -184,16 +204,14 @@ export default function CreateSupplier() {
                     <input
                       {...register("Phone", {
                         required: 'El teléfono es requerido',
-                        pattern: {
-                            // value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/,
-                            // message: 'El correo electrónico no es válido'
-                        }
+                       
                     })}
 
-                        type="tel"
+                        type="number"
                         className="form-control"
                         required
                     />
+                     {errors.Phone && <p className="text-red-500">{errors.Phone.message}</p>}
                 </div>
 
                 <div class="form-group col-md-6">
@@ -231,7 +249,7 @@ export default function CreateSupplier() {
                 </div>                              
                          <div className="buttonconfirm">
                          <div class="mb-3">
-                                <button class="btn btn-primary mr-5" type="submit">Confirmar</button>
+                                <button class="btn btn-primary mr-5" type="submit"  disabled={!isValid} >Confirmar</button>
                                 <button class="btn btn-primary" onClick={handleClose} type="submit" >Cancelar</button>
                             </div>
                          </div>
