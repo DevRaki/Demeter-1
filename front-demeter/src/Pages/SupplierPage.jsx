@@ -5,10 +5,6 @@ import { MdToggleOn, MdToggleOff } from "react-icons/md";
 import { useSupplier } from '../Context/Supplier.context';
 import '../css/style.css'
 import '../css/landing.css'
-import '../fonts/cryptofont.css'
-import '../fonts/feather.css'
-import '../fonts/fontawesome.css'
-import '../fonts//material.css'
 import CreateSupplier from '../Components/CreateSupplier.jsx';
 
 function SupplierPage() {
