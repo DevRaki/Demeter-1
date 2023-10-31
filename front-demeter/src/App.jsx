@@ -5,10 +5,16 @@ import './index.css'
 import { Role } from './Context/Role.context.jsx'
 import { User } from './Context/User.context.jsx'
 import { Supplier } from './Context/Supplier.context.jsx'
+import { SaleProvider } from './context/SaleContext'
+import { ProductProvider } from './context/ProductContext'
+import { ProductCategoriesProvider } from './context/ProductCategoriesContext'
 
 // Pages
 import UserPage from './Pages/UserPage.jsx'
 import SupplierPage from './Pages/SupplierPage.jsx'
+import ViewSales from './Pages/ViewSales'
+import Sales from './Pages/sales'
+
 
 // Menu & Header
 import Navbar from './Components/Navbar.jsx'
@@ -21,6 +27,9 @@ function App() {
       <Role>
         <User>
           <Supplier>
+          <SaleProvider>
+          <ProductProvider>
+          <ProductCategoriesProvider>
             <Navbar />
             <Header />
             <Routes>
@@ -34,8 +43,13 @@ function App() {
               <Route path='/category_product' element={<h3>Categoria producto</h3>} />
               <Route path='/product' element={<h3>Producto</h3>} />
               <Route path='/waiter' element={<h3>Meseros</h3>} />
-              <Route path='/sale' element={<h3>Venta</h3>} />
+              <Route path='/sale' element={<ViewSales/>} />
+              <Route path='/sales' element={<Sales/>} />
+              
             </Routes>
+            </ProductCategoriesProvider>
+            </ProductProvider>
+            </SaleProvider>
           </Supplier>
         </User>
       </Role>
