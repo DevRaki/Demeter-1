@@ -13,10 +13,10 @@ import PaymentMethodModal from '../components/PayModal.jsx'
 import ReadSale from './ReadSale';
 
 function ViewSales() {
-  const {  fetchSales, Sales, paySale, getOne, Sale } = useSaleContext();
+  const {  fetchSales, Sales, paySale, getOne, Sale , selectAction, } = useSaleContext();
   const [pageNumber, setPageNumber] = useState(0);
   const [idSale, setID] = useState();
-  const salesPerPage = 10;
+  const salesPerPage = 6;
   const pagesVisited = pageNumber * salesPerPage;
   const displaySales = Sales.slice(pagesVisited, pagesVisited + salesPerPage);
   const handlePageClick = ({ selected }) => {
@@ -55,52 +55,6 @@ function ViewSales() {
 
   return (
     <div>
-      <header className="pc-header">
-        <div className="header-wrapper">
-          <div className="mr-auto pc-mob-drp">
-            <ul className="list-unstyled">
-              <li className="dropdown pc-h-item">
-                <h3>Gestión de Ventas</h3>
-              </li>
-            </ul>
-          </div>
-          <div className="ml-auto">
-            <ul className="list-unstyled">
-              <li className="dropdown pc-h-item">
-                <a
-                  className="pc-head-link dropdown-toggle arrow-none mr-0"
-                  data-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="false"
-                  aria-expanded="false"
-                >
-                  <img src={users} alt="user-image" className="user-avtar" />
-                  <span>
-                    <span className="user-name">Alvaro Perez N</span>
-                    <span className="user-desc">Administrator</span>
-                  </span>
-                </a>
-                <div className="dropdown-menu dropdown-menu-right pc-h-dropdown">
-                  <a href="auth-signin.html" className="dropdown-item">
-                    <i className="material-icons-two-tone">chrome_reader_mode</i>
-                    <span>Editar perfil</span>
-                  </a>
-                  <a href="auth-signin.html" className="dropdown-item">
-                    <i className="material-icons-two-tone">lock</i>
-                    <span>Cambio contraseña</span>
-                  </a>
-                  <br />
-                  <a href="auth-signin.html" className="dropdown-item">
-                    <i className="material-icons-two-tone">exit_to_app</i>
-                    <span>Logout</span>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
       <section className="pc-container">
         <div className="pcoded-content">
           <div className="row">
@@ -113,7 +67,7 @@ function ViewSales() {
                   <div className="row">
                     <div className="col-md-6">
                       <Link to="/sales">
-                        <button type="button" className="btn bg-red-500">
+                        <button type="button" className="btn bg-red-500" onClick={() =>{selectAction(1)}}>
                           Registrar Ventas
                         </button>
                       </Link>
@@ -133,15 +87,15 @@ function ViewSales() {
                   </div>
                   <div className="card-body table-border-style">
                     <div className="table-responsive">
-                      <table className="table table-hover">
+                      <table className="table table-hover " >
                         <thead>
                           <tr>
-                            <th>#</th>
+                            <th >#</th>
                             <th>Estado</th>
                             <th>Total</th>
                             <th>SubTotal</th>
                             <th>Mesero</th>
-                            <th>Acciones</th>
+                            <th className='flex flex-row  justify-center'>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -152,10 +106,12 @@ function ViewSales() {
                               <td>{sale.Total}</td>
                               <td>{sale.Total}</td>
                               <td>{sale.User_ID ? sale.User_ID : 'Venta Rapida'}</td>
-                              <td>
-                                <button type="button" className="btn btn-icon btn-primary" >
+                              <td className='flex flex-row  justify-center space-x-[2vh]'>
+                                <Link to= '/sales'>
+                                <button type="button" className="btn btn-icon btn-primary" onClick={() =>{getOne(sale.ID_Sale), selectAction(2)}} >
                                   <i><BiEdit></BiEdit></i>
                                 </button>
+                                </Link>
                                 <button type="button" className="btn btn-icon btn-secondary" onClick={()=>{getOne(sale.ID_Sale).then(openHelloModal()) }}>
                                   <i><AiOutlineEye></AiOutlineEye></i>
                                 </button>

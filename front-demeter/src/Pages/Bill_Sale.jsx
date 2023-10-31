@@ -37,20 +37,29 @@ function Bill() {
             return acc + (product.Price_Product * item.Lot);
         }, 0);
         fetchGain(subtotal);
-    }, [newDetails]);
+    }, [newDetails,AllProducts, Sales]);
 
     const decreaseLot = (index) => {
         if (newDetails[index].Lot > 0) {
             newDetails[index].Lot -= 1;
-            forceUpdate(); // Forzar la actualización del componente
-            setNewCost(); // Actualizar el costo
+            forceUpdate();
+            updateTotal();
         }
     }
 
     const increaseLot = (index) => {
         newDetails[index].Lot += 1;
-        forceUpdate(); // Forzar la actualización del componente
-        setNewCost(); // Actualizar el costo
+        forceUpdate();
+        updateTotal();
+    }
+
+    // Función para actualizar el valor de total y llamar fetchGain
+    const updateTotal = () => {
+        const newTotal = newDetails.reduce((acc, item) => {
+            const product = AllProducts.find(product => product.ID_Product === item.Product_ID);
+            return acc + (product.Price_Product * item.Lot);
+        }, 0);
+        fetchGain(newTotal); // Llama a fetchGain con el nuevo valor de total
     }
 
     return (

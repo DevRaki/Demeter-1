@@ -18,6 +18,7 @@ export const SaleProvider = ({ children }) => {
     const [Sales, setSales] = useState ([]);
     const [details, setDetails] = useState([]);
     const [total, setTotal] = useState([]);
+    const [action, setAction] = useState([]) // 1: Create 2: Update
 
 
     const Create = async () => {
@@ -107,6 +108,10 @@ export const SaleProvider = ({ children }) => {
         setnewDetails((prevList) => [...prevList, detail]);
       };
 
+    const selectAction = (act) => {
+        setAction(act)
+    }
+
   
 
 
@@ -118,6 +123,8 @@ export const SaleProvider = ({ children }) => {
                 details,
                 total,
                 newDetails,
+                action,
+                selectAction,
                 addnewDetail,
                 getOne,
                 paySale,

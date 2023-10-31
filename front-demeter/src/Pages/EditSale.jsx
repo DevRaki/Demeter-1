@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useSaleContext } from '../context/SaleContext';
 import { useProduct } from '../context/ProductContext';
 import { IoIosAdd } from 'react-icons/io';
@@ -13,13 +14,22 @@ function Edit_Bill() {
 
     const CreateSale = () => {
         if(newDetails.length > 0){
-        Create().then(createManyDetails(newDetails));
+            createManyDetails(newDetails);
+            Count({
+                ID_Sale : Sale.ID_Sale,
+                Total : total,
+                SubTotal : total
+            })
+            fetchGain(0)
         Setsalemss("Generado correctamente")
         }
         else{
             Setsalemss("No puedes Generar")
         }
     }
+    useEffect(() => {
+        getDetailsSale(Sale.ID_Sale);
+    }, [Sale, newDetails]);
 
     useEffect(() => {
         getwholeProducts();
@@ -27,7 +37,7 @@ function Edit_Bill() {
 
     useEffect(() => {
         if (Sales.length > 0) {
-            setNewSaleID((Sales[Sales.length - 1].ID_Sale) + 1);
+            setNewSaleID(Sale.ID_Sale);
         }
         else{
             setNewSaleID(1);
@@ -36,27 +46,40 @@ function Edit_Bill() {
             const product = AllProducts.find(product => product.ID_Product === item.Product_ID);
             return acc + (product.Price_Product * item.Lot);
         }, 0);
-        fetchGain(subtotal);
+        const subtotal2 = details.reduce((acc, item) => {
+            const product = AllProducts.find(product => product.ID_Product === item.Product_ID);
+            return acc + (product.Price_Product * item.Lot);
+        }, 0);
+        fetchGain(subtotal + subtotal2);
+        console.log(total)
     }, [newDetails]);
 
     const decreaseLot = (index) => {
         if (newDetails[index].Lot > 0) {
             newDetails[index].Lot -= 1;
-            forceUpdate(); // Forzar la actualización del componente
-            setNewCost(); // Actualizar el costo
+            forceUpdate();
+            updateTotal();
         }
     }
 
     const increaseLot = (index) => {
         newDetails[index].Lot += 1;
-        forceUpdate(); // Forzar la actualización del componente
-        setNewCost(); // Actualizar el costo
+        forceUpdate();
+        updateTotal();
     }
 
+    // Función para actualizar el valor de total y llamar fetchGain
+    const updateTotal = () => {
+        const newTotal = newDetails.reduce((acc, item) => {
+            const product = AllProducts.find(product => product.ID_Product === item.Product_ID);
+            return acc + (product.Price_Product * item.Lot);
+        }, 0);
+        fetchGain(newTotal); // Llama a fetchGain con el nuevo valor de total
+    }
     return (
         <div className="relative text-center h-full w-full flex flex-col mt-[3vh] items-center">
             <form className="mt-4">
-                <h2 className="text-xl font-bold mb-2">Orden {newSaleID}</h2>
+                <h2 className="text-xl font-bold mb-2">Orden {Sale.ID_Sale}</h2>
                 <div className="mb-4">
                     <label htmlFor="date" className="block text-gray-600">Fecha:</label>
                     <input
@@ -88,6 +111,22 @@ function Edit_Bill() {
                             </tr>
                         </thead>
                         <tbody>
+                            {details.map((item, index) => (
+                                <tr key={index}>
+                                    <td className="p-1">
+                                        {AllProducts.find(product => product.ID_Product === item.Product_ID).Name_Products}
+                                    </td>
+                                    <td className="flex flex-row items-center p-1 ml-[1vh]">
+                                        <div className="lot-button cursor-pointer" onClick={() => decreaseLot(index)}>
+                                            <AiOutlineMinus />
+                                        </div>
+                                        {item.Lot}
+                                        <div className="lot-button cursor-pointer" onClick={() => increaseLot(index)}>
+                                            <IoIosAdd />
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
                             {newDetails.map((item, index) => (
                                 <tr key={index}>
                                     <td className="p-1">
@@ -109,15 +148,17 @@ function Edit_Bill() {
                 </div>
 
                 <div className="mb-4">
-                    <p>SubTotal: {total} Total: {total}</p>
+                    <p>SubTotal: {(total)} Total: {total}</p>
                 </div>
             </form>
+            <Link to= '/sale'>
             <button
                 className="bg-orange-500 text-white py-2 px-4 rounded"
                 onClick={CreateSale}
             >
-                Generar orden
+                Actualizar orden
             </button>
+            </Link>
             <div>{salemss}</div>
         </div>
     );

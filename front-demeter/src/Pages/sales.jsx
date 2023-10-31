@@ -3,6 +3,7 @@ import { useProductCategories } from '../context/ProductCategoriesContext';
 import { useProduct } from '../context/ProductContext';
 import { useSaleContext } from '../context/SaleContext';
 import Bill from './Bill_Sale';
+import Edit_Bill from './EditSale';
 
 function Sales() {
     const { ProductCategories, fetchProductCategories } = useProductCategories();
@@ -12,17 +13,22 @@ function Sales() {
     const [selectedCategoryName, setSelectedCategoryName] = useState({});
     const [categoryImages, setCategoryImages] = useState({});
     const [productNames, setProductNames] = useState({});
-    const { Sale, CreateDetail, getDetailsSale, Count, total, fetchSales, Sales, addnewDetail, newDetails, setNewCost, newCost } = useSaleContext();
+    const { Sale, CreateDetail, getDetailsSale, Count, total, fetchSales, Sales, addnewDetail, newDetails, setNewCost, newCost, action } = useSaleContext();
     const [newSaleID, setNewSaleID] =useState()
     useEffect(() => {
         fetchProductCategories();
 
-        if (Sales.length > 0) {
+        if (Sales.length > 0 && action == 1) {
             setNewSaleID((Sales[Sales.length - 1].ID_Sale) + 1);
+        }
+        else if(action == 2){
+            setNewSaleID(Sale.ID_Sale)
+
         }
         else{
             setNewSaleID(1);
         }
+        
     }, []);
     const handleCategoryChange = (event) => {
         const newCategoryID = event.target.value;
@@ -94,11 +100,11 @@ function Sales() {
     
     return (
         <div className=" ">
-            <h1 className="text-3xl font-bold mb-4">Ventas 1.0</h1>
+            <h1 className="text-3xl font-bold mb-4">Ventas 1.0 </h1>
             <div className='flex flex-grid'>
                 <div className="w-[100vh] min-h-[87vh] ml-[30vh]">
                     <div className="float-left mt-[3vh]">
-                        <label htmlFor="categorias" className="text-lg font-medium text-gray-700">Seleccione categorías:</label>
+                        <label htmlFor="categorias" className="text-lg font-medium text-gray-700">Seleccione categorías: </label>
                         <select
                             id="categorias"
                             name="categorias"
@@ -139,7 +145,8 @@ function Sales() {
                 </div>
                 <div className="contenedor derecho w-[50vh] bg-gray-200 border border-gray-400 rounded-lg h-[60vh] shadow-lg relative mt-[10vh]">
                     <div className="h-full w-full overflow-hidden">
-                        <Bill />
+                    
+                    {action === 1 ? <Bill /> : action === 2 ? <Edit_Bill /> : null}
                     </div>
                 </div>
             </div>

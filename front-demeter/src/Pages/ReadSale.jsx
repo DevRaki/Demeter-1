@@ -8,11 +8,7 @@ function ReadSale() {
     const { Create, Sale, getDetailsSale, details, Count , fetchGain, total } = useSaleContext();
     const { getwholeProducts, AllProducts } = useProduct();
 
- 
 
-    const CreateSale = () => {
-        Create();
-    }
 
     useEffect(() => {
         getwholeProducts();
@@ -29,8 +25,6 @@ function ReadSale() {
             
         }, 0);
         fetchGain(subtotal)
-
-         
     }, [details, AllProducts]);
 
     return (
@@ -68,16 +62,12 @@ function ReadSale() {
                                         <td className=" p-1">
                                             {AllProducts.find(product => product.ID_Product === item.Product_ID).Name_Products}
                                         </td>
-                                        <td className=" flex flex-row items-center p-1 ml-[1vh]">
-                                            <div style={{ marginRight: '0.5rem' }}>
-                                                <AiOutlineMinus />
-                                            </div>
+                                        <td className=" flex flex-row items-center justify-center p-1 ml-[1vh]">
+                                            
                                             <div>
                                                 {item.Lot}
                                             </div>
-                                            <div style={{ marginLeft: '0.5rem' }}>
-                                                <IoIosAdd />
-                                            </div>
+                                           
                                         </td>
                                     </tr>
                                 ))}
