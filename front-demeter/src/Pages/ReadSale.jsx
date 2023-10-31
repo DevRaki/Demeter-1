@@ -52,16 +52,7 @@ function ReadSale() {
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="waiter" className="block text-gray-600">Mesero:</label>
-                        <select
-                            id="waiter"
-                            name="waiter"
-                            className="w-full p-2 border rounded-xl"
-                        >
-                            <option value="mesero1">Mesero 1</option>
-                            <option value="mesero2">Mesero 2</option>
-                            <option value="mesero3">Mesero 3</option>
-                        </select>
+                        <p> Mesero : {Sale.User_ID ? 'Mesero' : 'Venta Rapida'}</p>
                     </div>
                     <div className="w-full overflow-x-auto">
                         <table className="min-w-full bg-white border rounded-xl">

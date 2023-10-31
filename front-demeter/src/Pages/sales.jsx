@@ -16,9 +16,14 @@ function Sales() {
     const [newSaleID, setNewSaleID] =useState()
     useEffect(() => {
         fetchProductCategories();
-        setNewSaleID((Sales[Sales.length - 1].ID_Sale)+1)
-    }, []);
 
+        if (Sales.length > 0) {
+            setNewSaleID((Sales[Sales.length - 1].ID_Sale) + 1);
+        }
+        else{
+            setNewSaleID(1);
+        }
+    }, []);
     const handleCategoryChange = (event) => {
         const newCategoryID = event.target.value;
 
@@ -73,11 +78,7 @@ function Sales() {
         
     }
     const handleImageClick = async (categoryID, imageIndex) => {
-        const params = {
-            ID_Sale: Sale.ID_Sale,
-            SubTotal: total,
-            Total: total
-        };
+        
     
         try {
             const data = await fetchProduct(categoryID);

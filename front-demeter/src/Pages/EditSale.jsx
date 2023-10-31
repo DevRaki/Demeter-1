@@ -4,7 +4,7 @@ import { useProduct } from '../context/ProductContext';
 import { IoIosAdd } from 'react-icons/io';
 import { AiOutlineMinus } from 'react-icons/ai';
 
-function Bill() {
+function Edit_Bill() {
     const { Create, Sale, getDetailsSale, details, Count, fetchGain, total, newDetails, Sales, createManyDetails, setNewCost } = useSaleContext();
     const { getwholeProducts, AllProducts } = useProduct();
     const [newSaleID, setNewSaleID] = useState();
@@ -131,4 +131,4 @@ function useForceUpdate() {
     return update;
 }
 
-export default Bill;
+export default Edit_Bill;

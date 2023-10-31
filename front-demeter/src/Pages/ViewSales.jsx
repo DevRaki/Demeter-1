@@ -6,9 +6,11 @@ import '../fonts/feather.css';
 import '../fonts/fontawesome.css'; 
 import '../fonts/material.css'; 
 import '../css/style.css'; 
+import { AiOutlineEye, AiFillDelete } from 'react-icons/ai'
+import { BiEdit } from 'react-icons/bi'
 import users from '../img/users.png'
 import PaymentMethodModal from '../components/PayModal.jsx'
-import ReadSale from './Bill_Sale';
+import ReadSale from './ReadSale';
 
 function ViewSales() {
   const {  fetchSales, Sales, paySale, getOne, Sale } = useSaleContext();
@@ -24,9 +26,7 @@ function ViewSales() {
   const pageCount = Math.ceil(Sales.length / salesPerPage);
 
   useEffect(() => {
-    
     fetchSales();
-    getOne(30);
   }, []);
   
   
@@ -154,13 +154,13 @@ function ViewSales() {
                               <td>{sale.User_ID ? sale.User_ID : 'Venta Rapida'}</td>
                               <td>
                                 <button type="button" className="btn btn-icon btn-primary" >
-                                  <i data-feather="thumbs-up"></i>
+                                  <i><BiEdit></BiEdit></i>
                                 </button>
                                 <button type="button" className="btn btn-icon btn-secondary" onClick={()=>{getOne(sale.ID_Sale).then(openHelloModal()) }}>
-                                  <i data-feather="camera"></i>
+                                  <i><AiOutlineEye></AiOutlineEye></i>
                                 </button>
                                 <button type="button" className="btn btn-icon btn-success" onClick={() =>{openModal(), setID(sale.ID_Sale)}}>
-                                  <i data-feather="check-circle"></i>
+                                  <i><AiFillDelete></AiFillDelete></i>
                                 </button>
                               </td>
                             </tr>
@@ -193,7 +193,7 @@ function ViewSales() {
       {helloModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="modal-container bg-white w-96 rounded-lg shadow-lg">
-              <Bill></Bill>
+              <ReadSale></ReadSale>
             <div className="modal-actions flex justify-center pb-4">
               <button
                 type="button"
