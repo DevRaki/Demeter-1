@@ -13,7 +13,7 @@ import PaymentMethodModal from '../components/PayModal.jsx'
 import ReadSale from './ReadSale';
 
 function ViewSales() {
-  const {  fetchSales, Sales, paySale, getOne, Sale , selectAction, } = useSaleContext();
+  const {  fetchSales, Sales, paySale, getOne, Sale , selectAction, CancelDet} = useSaleContext();
   const [pageNumber, setPageNumber] = useState(0);
   const [idSale, setID] = useState();
   const salesPerPage = 6;
@@ -67,7 +67,7 @@ function ViewSales() {
                   <div className="row">
                     <div className="col-md-6">
                       <Link to="/sales">
-                        <button type="button" className="btn bg-red-500" onClick={() =>{selectAction(1)}}>
+                        <button type="button" className="btn bg-red-500" onClick={() =>{selectAction(1) }}>
                           Registrar Ventas
                         </button>
                       </Link>

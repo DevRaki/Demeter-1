@@ -59,6 +59,15 @@ export const SaleProvider = ({ children }) => {
         }
 
     }
+    const CancelDet = async () => {
+        try {
+            setnewDetails([])
+            console.log(newDetails)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
     const getDetailsSale = async (id) => {
         try {
             const res = await GetDetails(id);
@@ -125,6 +134,7 @@ export const SaleProvider = ({ children }) => {
                 newDetails,
                 action,
                 selectAction,
+                CancelDet,
                 addnewDetail,
                 getOne,
                 paySale,

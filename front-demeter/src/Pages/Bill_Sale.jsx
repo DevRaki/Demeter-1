@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useSaleContext } from '../context/SaleContext';
 import { useProduct } from '../context/ProductContext';
 import { IoIosAdd } from 'react-icons/io';
 import { AiOutlineMinus } from 'react-icons/ai';
 
 function Bill() {
-    const { Create, Sale, getDetailsSale, details, Count, fetchGain, total, newDetails, Sales, createManyDetails, setNewCost } = useSaleContext();
+    const { Create, Sale, getDetailsSale, details, Count, fetchGain, total, newDetails, Sales, createManyDetails, setNewCost, CancelDet } = useSaleContext();
     const { getwholeProducts, AllProducts } = useProduct();
     const [newSaleID, setNewSaleID] = useState();
     const [salemss , Setsalemss] = useState();
     const forceUpdate = useForceUpdate(); 
+
+    const Cancel = () => {
+        CancelDet
+    }
 
     const CreateSale = () => {
         if(newDetails.length > 0){
@@ -53,13 +58,12 @@ function Bill() {
         updateTotal();
     }
 
-    // Función para actualizar el valor de total y llamar fetchGain
     const updateTotal = () => {
         const newTotal = newDetails.reduce((acc, item) => {
             const product = AllProducts.find(product => product.ID_Product === item.Product_ID);
             return acc + (product.Price_Product * item.Lot);
         }, 0);
-        fetchGain(newTotal); // Llama a fetchGain con el nuevo valor de total
+        fetchGain(newTotal); 
     }
 
     return (
@@ -121,13 +125,27 @@ function Bill() {
                     <p>SubTotal: {total} Total: {total}</p>
                 </div>
             </form>
+            
+            <div className="buttons flex-row space-x-[3vh]">
+            <Link to= '/sale'>
             <button
                 className="bg-orange-500 text-white py-2 px-4 rounded"
                 onClick={CreateSale}
             >
                 Generar orden
             </button>
+            </Link>
+
+            <Link to= '/sale'>
+            <button
+                className="bg-red-500 text-white py-2 px-4 rounded"
+            >
+                Cancelar Venta
+            </button>
+            </Link>
+            </div>
             <div>{salemss}</div>
+            
         </div>
     );
 }
