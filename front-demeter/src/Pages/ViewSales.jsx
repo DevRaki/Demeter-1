@@ -7,6 +7,7 @@ import '../fonts/fontawesome.css';
 import '../fonts/material.css'; 
 import '../css/style.css'; 
 import { AiOutlineEye, AiFillDelete } from 'react-icons/ai'
+import { FaRegMoneyBillAlt } from "react-icons/fa";
 import { BiEdit } from 'react-icons/bi'
 import users from '../img/users.png'
 import PaymentMethodModal from '../components/PayModal.jsx'
@@ -116,7 +117,7 @@ function ViewSales() {
                                   <i><AiOutlineEye></AiOutlineEye></i>
                                 </button>
                                 <button type="button" className="btn btn-icon btn-success" onClick={() =>{openModal(), setID(sale.ID_Sale)}}>
-                                  <i><AiFillDelete></AiFillDelete></i>
+                                  <i><FaRegMoneyBillAlt></FaRegMoneyBillAlt></i>
                                 </button>
                               </td>
                             </tr>

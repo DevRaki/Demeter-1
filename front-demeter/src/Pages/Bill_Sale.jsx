@@ -6,25 +6,28 @@ import { IoIosAdd } from 'react-icons/io';
 import { AiOutlineMinus } from 'react-icons/ai';
 
 function Bill() {
-    const { Create, Sale, getDetailsSale, details, Count, fetchGain, total, newDetails, Sales, createManyDetails, setNewCost, CancelDet } = useSaleContext();
+    const { Create, Sale, getDetailsSale, details, Count, fetchGain, total, newDetails, Sales, setnewDetails, createManyDetails, setNewCost, CancelDet, deleteDetail } = useSaleContext();
     const { getwholeProducts, AllProducts } = useProduct();
     const [newSaleID, setNewSaleID] = useState();
-    const [salemss , Setsalemss] = useState();
-    const forceUpdate = useForceUpdate(); 
+    const [salemss, Setsalemss] = useState();
+    const forceUpdate = useForceUpdate();
 
-    const Cancel = () => {
-        CancelDet
-    }
+ 
 
     const CreateSale = () => {
-        if(newDetails.length > 0){
-        Create().then(createManyDetails(newDetails));
-        Setsalemss("Generado correctamente")
-        }
-        else{
-            Setsalemss("No puedes Generar")
+        if (newDetails.length > 0) {
+            Create().then(createManyDetails(newDetails));
+            Setsalemss("Generado correctamente");
+            createManyDetails([]); // Limpiar la lista de detalles después de generar la orden
+        } else {
+            Setsalemss("No puedes Generar");
         }
     }
+    const removeDetail = (index) => {
+        const updatedDetails = [...newDetails];
+        updatedDetails.splice(index, 1);
+        setnewDetails(updatedDetails);
+    };
 
     useEffect(() => {
         getwholeProducts();
@@ -33,8 +36,7 @@ function Bill() {
     useEffect(() => {
         if (Sales.length > 0) {
             setNewSaleID((Sales[Sales.length - 1].ID_Sale) + 1);
-        }
-        else{
+        } else {
             setNewSaleID(1);
         }
         const subtotal = newDetails.reduce((acc, item) => {
@@ -42,7 +44,7 @@ function Bill() {
             return acc + (product.Price_Product * item.Lot);
         }, 0);
         fetchGain(subtotal);
-    }, [newDetails,AllProducts, Sales]);
+    }, [newDetails, AllProducts, Sales]);
 
     const decreaseLot = (index) => {
         if (newDetails[index].Lot > 0) {
@@ -63,7 +65,7 @@ function Bill() {
             const product = AllProducts.find(product => product.ID_Product === item.Product_ID);
             return acc + (product.Price_Product * item.Lot);
         }, 0);
-        fetchGain(newTotal); 
+        fetchGain(newTotal);
     }
 
     return (
@@ -98,13 +100,14 @@ function Bill() {
                             <tr>
                                 <th className="">Producto</th>
                                 <th className="p-1">Cantidad</th>
+                                <th className="p-1">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {newDetails.map((item, index) => (
                                 <tr key={index}>
                                     <td className="p-1">
-                                        {AllProducts.find(product => product.ID_Product === item.Product_ID).Name_Products}
+                                        + {AllProducts.find(product => product.ID_Product === item.Product_ID).Name_Products}
                                     </td>
                                     <td className="flex flex-row items-center p-1 ml-[1vh]">
                                         <div className="lot-button cursor-pointer" onClick={() => decreaseLot(index)}>
@@ -115,6 +118,9 @@ function Bill() {
                                             <IoIosAdd />
                                         </div>
                                     </td>
+                                    <td className="p-1 cursor-pointer" onClick={() => removeDetail(index)}>
+                                        X
+                                </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -125,27 +131,27 @@ function Bill() {
                     <p>SubTotal: {total} Total: {total}</p>
                 </div>
             </form>
-            
-            <div className="buttons flex-row space-x-[3vh]">
-            <Link to= '/sale'>
-            <button
-                className="bg-orange-500 text-white py-2 px-4 rounded"
-                onClick={CreateSale}
-            >
-                Generar orden
-            </button>
-            </Link>
 
-            <Link to= '/sale'>
-            <button
-                className="bg-red-500 text-white py-2 px-4 rounded"
-            >
-                Cancelar Venta
-            </button>
-            </Link>
+            <div className="buttons flex-row space-x-[3vh]">
+                <Link to='/sale'>
+                    <button
+                        className="bg-orange-500 text-white py-2 px-4 rounded"
+                        onClick={CreateSale}
+                    >
+                        Generar orden
+                    </button>
+                </Link>
+
+                <Link to='/sale'>
+                    <button
+                        className="bg-red-500 text-white py-2 px-4 rounded"
+                    >
+                        Cancelar Venta
+                    </button>
+                </Link>
             </div>
             <div>{salemss}</div>
-            
+
         </div>
     );
 }

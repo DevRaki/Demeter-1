@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react'
-import { Createsale, CreatesaleDetail, GetDetails, UpdSale, getSale, pay, GetoneSale, CreateManysaleDetails } from '../api/sale.request'; 
+import { Createsale, CreatesaleDetail, GetDetails, UpdSale, getSale, pay, GetoneSale, CreateManysaleDetails, deleteDetailSale } from '../api/sale.request'; 
 import React from 'react';
 export const SaleContext = createContext();
 
@@ -111,6 +111,14 @@ export const SaleProvider = ({ children }) => {
             console.log(error)
         }
     }
+    const deleteDetail = async(data) =>{
+        try {
+           const res =await deleteDetailSale(data);
+           console.log(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const addnewDetail = (detail) => {
        
@@ -133,7 +141,9 @@ export const SaleProvider = ({ children }) => {
                 total,
                 newDetails,
                 action,
+                setnewDetails,
                 selectAction,
+                deleteDetail,
                 CancelDet,
                 addnewDetail,
                 getOne,
